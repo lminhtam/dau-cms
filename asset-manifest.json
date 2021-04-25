@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/dau-cms/static/css/main.61ac2048.chunk.css",
+    "main.js": "/dau-cms/static/js/main.f27b6818.chunk.js",
+    "main.js.map": "/dau-cms/static/js/main.f27b6818.chunk.js.map",
+    "runtime-main.js": "/dau-cms/static/js/runtime-main.7294b71b.js",
+    "runtime-main.js.map": "/dau-cms/static/js/runtime-main.7294b71b.js.map",
+    "static/css/2.c51d807b.chunk.css": "/dau-cms/static/css/2.c51d807b.chunk.css",
+    "static/js/2.56d776de.chunk.js": "/dau-cms/static/js/2.56d776de.chunk.js",
+    "static/js/2.56d776de.chunk.js.map": "/dau-cms/static/js/2.56d776de.chunk.js.map",
+    "static/js/3.e0d3c837.chunk.js": "/dau-cms/static/js/3.e0d3c837.chunk.js",
+    "static/js/3.e0d3c837.chunk.js.map": "/dau-cms/static/js/3.e0d3c837.chunk.js.map",
+    "index.html": "/dau-cms/index.html",
+    "static/css/2.c51d807b.chunk.css.map": "/dau-cms/static/css/2.c51d807b.chunk.css.map",
+    "static/css/main.61ac2048.chunk.css.map": "/dau-cms/static/css/main.61ac2048.chunk.css.map",
+    "static/js/2.56d776de.chunk.js.LICENSE.txt": "/dau-cms/static/js/2.56d776de.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7294b71b.js",
+    "static/css/2.c51d807b.chunk.css",
+    "static/js/2.56d776de.chunk.js",
+    "static/css/main.61ac2048.chunk.css",
+    "static/js/main.f27b6818.chunk.js"
+  ]
+}
