@@ -5,6 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { firebaseConfig } from './firebaseConfig'
 import firebase from 'firebase'
+import GlobalModal from 'components/GlobalModal'
 
 firebase.initializeApp(firebaseConfig)
 firebase.analytics()
@@ -12,6 +13,7 @@ firebase.analytics()
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <GlobalModal />
   </React.StrictMode>,
   document.getElementById('root')
 )

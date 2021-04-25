@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+
+.ant-btn {
+  border-radius: 10px;
+}
+
+.ant-input {
+  border-radius: 10px;
+  height: 48px;
+}
