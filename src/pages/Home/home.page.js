@@ -17,7 +17,7 @@ import ModalAddTicket from './component/addTicketModal'
 import { getColumnSearchProps } from './component/searchInput'
 
 function Home(props) {
-  const [isAuth, setIsAuth] = useState(true)
+  const [isAuth, setIsAuth] = useState(false)
   const [showAddModal, setShowAddModal] = useState(false)
   const [pass, setPass] = useState('')
   const [tickets, setTickets] = useState([])
