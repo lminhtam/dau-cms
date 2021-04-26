@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/dau-cms/static/css/main.61ac2048.chunk.css",
-    "main.js": "/dau-cms/static/js/main.424fe8bb.chunk.js",
-    "main.js.map": "/dau-cms/static/js/main.424fe8bb.chunk.js.map",
+    "main.js": "/dau-cms/static/js/main.f552f6d4.chunk.js",
+    "main.js.map": "/dau-cms/static/js/main.f552f6d4.chunk.js.map",
     "runtime-main.js": "/dau-cms/static/js/runtime-main.5fc155c9.js",
     "runtime-main.js.map": "/dau-cms/static/js/runtime-main.5fc155c9.js.map",
     "static/css/2.c51d807b.chunk.css": "/dau-cms/static/css/2.c51d807b.chunk.css",
-    "static/js/2.abd0b87c.chunk.js": "/dau-cms/static/js/2.abd0b87c.chunk.js",
-    "static/js/2.abd0b87c.chunk.js.map": "/dau-cms/static/js/2.abd0b87c.chunk.js.map",
+    "static/js/2.914ef24a.chunk.js": "/dau-cms/static/js/2.914ef24a.chunk.js",
+    "static/js/2.914ef24a.chunk.js.map": "/dau-cms/static/js/2.914ef24a.chunk.js.map",
     "static/js/3.93264760.chunk.js": "/dau-cms/static/js/3.93264760.chunk.js",
     "static/js/3.93264760.chunk.js.map": "/dau-cms/static/js/3.93264760.chunk.js.map",
     "index.html": "/dau-cms/index.html",
     "static/css/2.c51d807b.chunk.css.map": "/dau-cms/static/css/2.c51d807b.chunk.css.map",
     "static/css/main.61ac2048.chunk.css.map": "/dau-cms/static/css/main.61ac2048.chunk.css.map",
-    "static/js/2.abd0b87c.chunk.js.LICENSE.txt": "/dau-cms/static/js/2.abd0b87c.chunk.js.LICENSE.txt"
+    "static/js/2.914ef24a.chunk.js.LICENSE.txt": "/dau-cms/static/js/2.914ef24a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5fc155c9.js",
     "static/css/2.c51d807b.chunk.css",
-    "static/js/2.abd0b87c.chunk.js",
+    "static/js/2.914ef24a.chunk.js",
     "static/css/main.61ac2048.chunk.css",
-    "static/js/main.424fe8bb.chunk.js"
+    "static/js/main.f552f6d4.chunk.js"
   ]
 }
