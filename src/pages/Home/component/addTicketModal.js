@@ -2,7 +2,7 @@ import { Button, Col, Input, Modal, Row, Typography } from 'antd'
 import GlobalModal from 'components/GlobalModal'
 import firebase from 'firebase'
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
@@ -39,12 +39,18 @@ export default function ModalAddTicket({
   closeModal = () => {},
   downloadQR = values => {}
 }) {
-  const handleOk = values => {
+  const handleOk = (values, setFieldValue = () => {}) => {
     onSubmit(values)
+    setFieldValue('email', '')
+    setFieldValue('fullname', '')
+    setFieldValue('phoneNumber', '')
     closeModal()
   }
 
-  const handleCancel = () => {
+  const handleCancel = (setFieldValue = () => {}) => {
+    setFieldValue('email', '')
+    setFieldValue('fullname', '')
+    setFieldValue('phoneNumber', '')
     closeModal()
   }
 
@@ -73,9 +79,9 @@ export default function ModalAddTicket({
       .catch(error => GlobalModal.alertMessage())
   }
 
-  const handleKeyPress = (event, isValid, values) => {
+  const handleKeyPress = (event, isValid, values, setFieldValue = () => {}) => {
     if (isValid > 0 && event.key === 'Enter') {
-      handleOk(values)
+      handleOk(values, setFieldValue)
     }
   }
 
@@ -99,24 +105,27 @@ export default function ModalAddTicket({
         isValid,
         errors,
         touched,
-        setFieldTouched
+        setFieldTouched,
+        setFieldValue
       }) => {
         return (
           <Modal
             title={'Thêm vé'}
             visible={isShow}
             centered
-            onOk={handleOk}
-            onCancel={handleCancel}
             footer={[
-              <Button key="cancelButton" onClick={handleCancel} size="large">
+              <Button
+                key="cancelButton"
+                onClick={() => handleCancel(setFieldValue)}
+                size="large"
+              >
                 Hủy
               </Button>,
               <Button
                 key="okButton"
                 size="large"
                 type="primary"
-                onClick={handleOk}
+                onClick={() => handleOk(values, setFieldValue)}
                 disabled={!isValid}
               >
                 Thêm
@@ -136,7 +145,9 @@ export default function ModalAddTicket({
                   onChange={handleChange('fullname')}
                   placeholder="Nguyễn Văn A"
                   value={values.fullname}
-                  onKeyPress={event => handleKeyPress(event, isValid, values)}
+                  onKeyPress={event =>
+                    handleKeyPress(event, isValid, values, setFieldValue)
+                  }
                 />
                 {errors.fullname && (
                   <Text style={{ color: 'red' }}>{errors.fullname}</Text>
@@ -157,7 +168,9 @@ export default function ModalAddTicket({
                   placeholder="nguyenvana@gmail.com"
                   value={values.email}
                   type="email"
-                  onKeyPress={event => handleKeyPress(event, isValid, values)}
+                  onKeyPress={event =>
+                    handleKeyPress(event, isValid, values, setFieldValue)
+                  }
                 />
                 {errors.email && (
                   <Text style={{ color: 'red' }}>{errors.email}</Text>
@@ -178,7 +191,9 @@ export default function ModalAddTicket({
                   placeholder="076XXXXXX"
                   value={values.phoneNumber}
                   type="tel"
-                  onKeyPress={event => handleKeyPress(event, isValid, values)}
+                  onKeyPress={event =>
+                    handleKeyPress(event, isValid, values, setFieldValue)
+                  }
                 />
                 {errors.phoneNumber && (
                   <Text style={{ color: 'red' }}>{errors.phoneNumber}</Text>

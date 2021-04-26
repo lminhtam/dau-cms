@@ -201,6 +201,24 @@ function Home(props) {
       sorter: (a, b) => a.date > b.date
     },
     {
+      title: 'Trạng thái',
+      key: 'status',
+      render: (value, record) => {
+        if (record?.checkInfo?.checkCount < 1) {
+          return <Text>CHƯA CHECKIN</Text>
+        } else if (record?.checkInfo?.checkCount > 1) {
+          return (
+            <Text style={{ color: 'red', fontWeight: 700 }}>
+              CHECKIN {record?.checkInfo?.checkCount} LẦN
+            </Text>
+          )
+        }
+        return (
+          <Text style={{ color: 'green', fontWeight: 700 }}>ĐÃ CHECKIN</Text>
+        )
+      }
+    },
+    {
       title: 'Vô hiệu hóa',
       dataIndex: 'enable',
       key: 'enable',
