@@ -13,11 +13,12 @@ import moment from 'moment'
 import * as QRCode from 'qrcode.react'
 import React, { useEffect, useRef, useState } from 'react'
 import { MODAL_TYPE, PASS } from 'ultis/functions'
-import { v4 as uuidv4 } from 'uuid'
+import ModalAddTicket from './component/addTicketModal'
 import { getColumnSearchProps } from './component/searchInput'
 
 function Home(props) {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(true)
+  const [showAddModal, setShowAddModal] = useState(false)
   const [pass, setPass] = useState('')
   const [tickets, setTickets] = useState([])
   const [searchText, setSearchText] = useState('')
@@ -31,12 +32,15 @@ function Home(props) {
         .ref('/tickets')
         .on('value', snapshot => {
           const data = snapshot.val()
-          const ticketsArray = Object.keys(data).map(key => {
-            return {
-              ...data[key],
-              id: key
-            }
-          })
+          const ticketsArray =
+            data && Object.keys(data).length > 0
+              ? Object.keys(data).map(key => {
+                  return {
+                    ...data[key],
+                    id: key
+                  }
+                })
+              : []
           setTickets(ticketsArray)
         })
     }
@@ -61,35 +65,17 @@ function Home(props) {
 
   const downloadQR = id => {
     const canvas = document.getElementById(id)
-    const pngUrl = canvas
-      .toDataURL('image/jpg')
-      .replace('image/jpg', 'image/octet-stream')
-    let downloadLink = document.createElement('a')
-    downloadLink.href = pngUrl
-    downloadLink.download = `${id}.jpg`
-    document.body.appendChild(downloadLink)
-    downloadLink.click()
-    document.body.removeChild(downloadLink)
-  }
-
-  const onAddNewTicket = () => {
-    const now = new Date().getTime()
-    const ticketId = uuidv4()
-    const values = {
-      ticketId,
-      date: now,
-      enable: true
+    if (canvas) {
+      const pngUrl = canvas
+        .toDataURL('image/jpg')
+        .replace('image/jpg', 'image/octet-stream')
+      let downloadLink = document.createElement('a')
+      downloadLink.href = pngUrl
+      downloadLink.download = `${id}.jpg`
+      document.body.appendChild(downloadLink)
+      downloadLink.click()
+      document.body.removeChild(downloadLink)
     }
-    firebase
-      .database()
-      .ref('/tickets')
-      .push(values)
-      .then(value => {
-        setTimeout(() => {
-          downloadQR(ticketId)
-        }, 1000)
-      })
-      .catch(error => GlobalModal.alertMessage())
   }
 
   const handleDelete = record => {
@@ -149,6 +135,51 @@ function Home(props) {
       sorter: (a, b) => a.ticketId.localeCompare(b.ticketId)
     },
     {
+      ...getColumnSearchProps(
+        'fullname',
+        'Nhập tên',
+        searchText,
+        setSearchText,
+        searchedColumn,
+        setSearchColumn,
+        refInput
+      ),
+      title: 'Tên',
+      dataIndex: 'fullname',
+      key: 'fullname',
+      sorter: (a, b) => a.fullname.localeCompare(b.fullname)
+    },
+    {
+      ...getColumnSearchProps(
+        'email',
+        'Nhập email',
+        searchText,
+        setSearchText,
+        searchedColumn,
+        setSearchColumn,
+        refInput
+      ),
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+      sorter: (a, b) => a.email.localeCompare(b.email)
+    },
+    {
+      ...getColumnSearchProps(
+        'phoneNumber',
+        'Nhập SĐT',
+        searchText,
+        setSearchText,
+        searchedColumn,
+        setSearchColumn,
+        refInput
+      ),
+      title: 'SĐT',
+      dataIndex: 'phoneNumber',
+      key: 'phoneNumber',
+      sorter: (a, b) => a.phoneNumber.localeCompare(b.phoneNumber)
+    },
+    {
       title: 'QR code',
       key: 'qrcode',
       render: (value, record) => {
@@ -165,7 +196,7 @@ function Home(props) {
       dataIndex: 'date',
       key: 'date',
       render: (value, record) => {
-        return <Text>{moment(value).format('DD/MM/YYYY')}</Text>
+        return <Text>{moment(value).format('DD/MM/YYYY HH:mm')}</Text>
       },
       sorter: (a, b) => a.date > b.date
     },
@@ -244,12 +275,17 @@ function Home(props) {
         type="primary"
         icon={<PlusCircleOutlined />}
         style={{ width: 200, marginBottom: 32 }}
-        onClick={() => onAddNewTicket()}
+        onClick={() => setShowAddModal(true)}
         size="large"
       >
         Thêm vé mới
       </Button>
       <Table columns={ticketColumns} dataSource={tickets} />
+      <ModalAddTicket
+        isShow={showAddModal}
+        closeModal={() => setShowAddModal(false)}
+        downloadQR={downloadQR}
+      />
     </div>
   )
 }
