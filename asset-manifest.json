@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dau-cms/static/css/main.61ac2048.chunk.css",
-    "main.js": "/dau-cms/static/js/main.f552f6d4.chunk.js",
-    "main.js.map": "/dau-cms/static/js/main.f552f6d4.chunk.js.map",
+    "main.js": "/dau-cms/static/js/main.9e0631bf.chunk.js",
+    "main.js.map": "/dau-cms/static/js/main.9e0631bf.chunk.js.map",
     "runtime-main.js": "/dau-cms/static/js/runtime-main.5fc155c9.js",
     "runtime-main.js.map": "/dau-cms/static/js/runtime-main.5fc155c9.js.map",
     "static/css/2.c51d807b.chunk.css": "/dau-cms/static/css/2.c51d807b.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.c51d807b.chunk.css",
     "static/js/2.914ef24a.chunk.js",
     "static/css/main.61ac2048.chunk.css",
-    "static/js/main.f552f6d4.chunk.js"
+    "static/js/main.9e0631bf.chunk.js"
   ]
 }
