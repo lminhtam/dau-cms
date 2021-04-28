@@ -62,6 +62,7 @@ export default function ModalAddTicket({
       ticketId,
       date: now,
       enable: true,
+      updatedAt: now,
       checkInfo: {
         checkCount: 0,
         checkPerson: null

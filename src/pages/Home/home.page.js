@@ -32,7 +32,7 @@ function Home(props) {
         .ref('/tickets')
         .on('value', snapshot => {
           const data = snapshot.val()
-          const ticketsArray =
+          let ticketsArray =
             data && Object.keys(data).length > 0
               ? Object.keys(data).map(key => {
                   return {
@@ -41,6 +41,8 @@ function Home(props) {
                   }
                 })
               : []
+          ticketsArray = ticketsArray.sort((a, b) => b.updatedAt - a.updatedAt)
+
           setTickets(ticketsArray)
         })
     }
